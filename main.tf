@@ -10,3 +10,8 @@ terraform {
 provider "azurerm" {
   features {}
 }
+
+resource "azurerm_resource_group" "learning" {
+  name     = "rg-learning-dev-eastus-001"
+  location = "East US"
+}
