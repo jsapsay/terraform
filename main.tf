@@ -18,7 +18,7 @@ resource "azurerm_resource_group" "learning" {
 }
 
 resource "azurerm_storage_account" "learning" {
-  name                     = "stlearningdev001"
+  name                     = "stlearningjon001"
   resource_group_name      = azurerm_resource_group.learning.name
   location                 = azurerm_resource_group.learning.location
   account_tier             = "Standard"
