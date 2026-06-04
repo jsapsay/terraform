@@ -24,3 +24,25 @@ resource "azurerm_storage_account" "learning" {
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
+
+resource "azurerm_kubernetes_cluster" "learning" {
+  name                = "aks-learning-dev-eastus-001"
+  location            = azurerm_resource_group.learning.location
+  resource_group_name = azurerm_resource_group.learning.name
+  dns_prefix          = "akslearning"
+
+  default_node_pool {
+    name       = "default"
+    node_count = 1
+    vm_size    = "Standard_D2_v2"
+  }
+
+  identity {
+    type = "SystemAssigned"
+  }
+}
+
+output "kube_config" {
+  value     = azurerm_kubernetes_cluster.learning.kube_config_raw
+  sensitive = true
+}
