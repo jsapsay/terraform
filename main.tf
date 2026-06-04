@@ -34,7 +34,7 @@ resource "azurerm_kubernetes_cluster" "learning" {
   default_node_pool {
     name       = "default"
     node_count = 1
-    vm_size    = "Standard_D2_v2"
+    vm_size    = "Standard_DC2as_v5"
   }
 
   identity {
