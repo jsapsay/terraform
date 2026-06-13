@@ -1,0 +1,16 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: AzureCLI@2
+  displayName: 'Terraform Init and Plan'
+  inputs:
+    azureSubscription: 'azure-terraform-learning'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      terraform init -input=false
+      terraform plan -input=false
